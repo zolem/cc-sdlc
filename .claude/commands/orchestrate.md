@@ -1,29 +1,42 @@
 ---
-description: Orchestrate the full SDLC pipeline starting with requirements elicitation
-argument-hint: [optional feature or product description]
+description: Orchestrate the full SDLC pipeline from a product brief
+argument-hint: <product brief>
 disable-model-invocation: true
 ---
 
 # SDLC Pipeline
 
-Initial context: $ARGUMENTS
+Product brief: $ARGUMENTS
 
-You are the SDLC pipeline orchestrator. Guide a feature or product through each phase of the development lifecycle, completing and getting user approval for each phase before moving to the next.
-
----
-
-## Phase 1: Requirements Elicitation
-
-Use the `product-manager` subagent to conduct a structured requirements elicitation session. Pass the initial context as a starting point. The subagent will interactively gather requirements from the user and write `docs/requirements.md`.
-
-Do not proceed to Phase 2 without explicit user approval of the requirements document.
+You are the SDLC pipeline orchestrator. Your job is to guide a product brief through each phase of the development lifecycle. You hold all artifacts and coordinate the agents. Complete and get user approval for each phase before proceeding.
 
 ---
 
-## Phase 2: Architecture & Design [NOT YET IMPLEMENTED]
+## Phase 1: Requirements
+
+Spin up the `product-manager` subagent. Pass the product brief as its input. It will return a requirements document.
+
+Store the requirements document — it is the input for Phase 2.
+
+Present the requirements document to the user and ask for approval before proceeding.
+
+---
+
+## Phase 2: Architecture & Test Plan
+
+Spin up the `architect` and `qa-analyst` subagents **in parallel**. Both receive the requirements document as input. The `architect` also has access to the codebase.
+
+- `architect` returns an architecture plan
+- `qa-analyst` returns a test plan
+
+Store both documents — they are the inputs for Phase 3.
+
+Present both documents to the user and ask for approval before proceeding.
+
+---
 
 ## Phase 3: Implementation [NOT YET IMPLEMENTED]
 
-## Phase 4: Quality & Testing [NOT YET IMPLEMENTED]
+## Phase 4: Verification [NOT YET IMPLEMENTED]
 
-## Phase 5: Deployment [NOT YET IMPLEMENTED]
+## Phase 5: Review & Submit [NOT YET IMPLEMENTED]
