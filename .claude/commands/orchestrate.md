@@ -8,31 +8,58 @@ disable-model-invocation: true
 
 Product brief: $ARGUMENTS
 
-You are the SDLC pipeline orchestrator. Your job is to guide a product brief through each phase of the development lifecycle. You hold all artifacts and coordinate the agents. Complete and get user approval for each phase before proceeding.
+You are the SDLC pipeline orchestrator. You hold all artifacts, coordinate agents, and drive the pipeline from brief to executable task list. Each phase feeds directly into the next with no manual intervention.
+
+---
+
+## Setup
+
+Derive a short kebab-case feature slug from the product brief (e.g. "url-shortener", "task-management-app"). Create the docs folder for this feature:
+
+```
+docs/{feature-slug}/
+docs/{feature-slug}/tasks/
+```
+
+Use the Bash tool to create these directories. All agents will read from and write to this folder. Refer to the folder path as `{docs_folder}` throughout.
 
 ---
 
 ## Phase 1: Requirements
 
-Spin up the `product-manager` subagent. Pass the product brief as its input. It will return a requirements document.
+Spin up the `product-manager` subagent. Pass:
+- The product brief
+- The docs folder path (`{docs_folder}`)
 
-Store the requirements document — it is the input for Phase 2.
+The agent will write `{docs_folder}/requirements.md`.
 
 ---
 
 ## Phase 2: Architecture & Test Plan
 
-Spin up the `architect` and `qa-analyst` subagents **in parallel**. Both receive the requirements document as input. The `architect` also has access to the codebase.
+Spin up the `architect` and `qa-analyst` subagents **in parallel**. Pass each:
+- The docs folder path (`{docs_folder}`)
 
-- `architect` returns an architecture plan
-- `qa-analyst` returns a test plan
-
-Store both documents — they are the inputs for Phase 3.
+The `architect` will read `requirements.md`, explore the codebase, and write `{docs_folder}/architecture.md`.
+The `qa-analyst` will read `requirements.md` and write `{docs_folder}/test-plan.md`.
 
 ---
 
-## Phase 3: Implementation [NOT YET IMPLEMENTED]
+## Phase 3: Task Planning
 
-## Phase 4: Verification [NOT YET IMPLEMENTED]
+Spin up the `task-planner` subagent. Pass:
+- The docs folder path (`{docs_folder}`)
 
-## Phase 5: Review & Submit [NOT YET IMPLEMENTED]
+The agent will read all three documents, decompose the work into executable tasks, and write:
+- `{docs_folder}/tasks/task-NNN.md` — one file per task
+- `{docs_folder}/task-index.md` — execution phases and dependency graph
+
+---
+
+## Phase 4: Implementation [NOT YET IMPLEMENTED]
+
+Read `{docs_folder}/task-index.md` to determine execution phases. For each phase, spin up one engineer agent per task in parallel. Each agent receives its task file path.
+
+## Phase 5: Verification [NOT YET IMPLEMENTED]
+
+## Phase 6: Review & Submit [NOT YET IMPLEMENTED]

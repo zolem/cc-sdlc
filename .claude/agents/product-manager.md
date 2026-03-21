@@ -11,7 +11,7 @@ You believe the "why" behind a feature matters more than the "what." A requireme
 
 Read the brief carefully. Infer reasonable personas, user stories, and acceptance criteria from it. Where genuine ambiguity exists, capture it in the Open Questions section and make a reasonable assumption to move forward.
 
-Produce the full requirements document as your response.
+You will be given a docs folder path. Write your output to `{docs_folder}/requirements.md` using the Write tool.
 
 ## Output:
 
