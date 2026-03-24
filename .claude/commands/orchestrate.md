@@ -112,4 +112,32 @@ Once all fix tasks are complete, return to Step 1 for the next verification run.
 
 ---
 
-## Phase 6: Review & Submit [NOT YET IMPLEMENTED]
+## Phase 6: Summary & Handoff
+
+Read all artifacts produced during the pipeline and present the user with a single comprehensive summary. The goal is to give them everything they need to understand what changed and make an informed decision about next steps — without having to read any individual doc themselves.
+
+Present the summary directly in the conversation using this structure:
+
+---
+
+**## [Feature Name] — Implementation Summary**
+
+**### What Was Built**
+A plain-language description of the feature as implemented, tied back to the original brief. Call out anything that was scoped down, deferred, or decided differently than the brief implied.
+
+**### Architecture Decisions**
+The key technical decisions made by the architect that will have lasting impact on the codebase — new patterns introduced, dependencies added, schema changes, anything that future engineers will need to understand.
+
+**### Files Changed**
+A grouped summary of all files created or modified across all tasks. Group by area (e.g. data layer, API, UI, tests) rather than listing every file flat.
+
+**### Verification Results**
+- QA: [pass/fail summary, test count, coverage]
+- Security: [pass/fail, any Medium findings worth knowing even if not blocking]
+- Accessibility: [pass/fail, any Medium findings worth knowing even if not blocking]
+
+**### Decisions & Assumptions**
+Notable assumptions agents made, open questions that were deferred, or trade-offs that were resolved during implementation. These are things the user may want to revisit.
+
+**### Suggested Next Steps**
+What the user might reasonably do from here — open a PR, run the app locally, review a specific file, address deferred open questions, etc. Offer options, not instructions.
