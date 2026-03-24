@@ -14,6 +14,13 @@ This copies the `/orchestrate` command and all agents into `~/.claude`, making t
 npx cc-sdlc --force
 ```
 
+If you've configured Claude Code to use a custom directory instead of `~/.claude`, pass it with `--claude-dir`:
+
+```bash
+npx cc-sdlc --claude-dir /path/to/your/.claude
+npx cc-sdlc --claude-dir /path/to/your/.claude --force
+```
+
 ## Usage
 
 Open Claude Code in any repository and run:

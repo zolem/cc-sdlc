@@ -6,9 +6,17 @@ const os = require('os');
 
 const force = process.argv.includes('--force');
 
-const src = path.join(__dirname, '..', '.claude');
-const dest = path.join(os.homedir(), '.claude');
+const claudeDirFlag = process.argv.indexOf('--claude-dir');
+const dest = claudeDirFlag !== -1
+  ? path.resolve(process.argv[claudeDirFlag + 1])
+  : path.join(os.homedir(), '.claude');
 
+if (claudeDirFlag !== -1 && !process.argv[claudeDirFlag + 1]) {
+  console.error('Error: --claude-dir requires a path argument');
+  process.exit(1);
+}
+
+const src = path.join(__dirname, '..', '.claude');
 const categories = ['agents', 'commands'];
 
 let installed = [];
@@ -29,16 +37,17 @@ for (const category of categories) {
     const destFile = path.join(destDir, file);
 
     if (fs.existsSync(destFile) && !force) {
-      skipped.push(`  ~/.claude/${category}/${file} (already exists — use --force to overwrite)`);
+      skipped.push(`  ${destFile} (already exists — use --force to overwrite)`);
       continue;
     }
 
     fs.copyFileSync(srcFile, destFile);
-    installed.push(`  ~/.claude/${category}/${file}`);
+    installed.push(`  ${destFile}`);
   }
 }
 
 console.log('\ncc-sdlc install\n');
+console.log(`Installing to: ${dest}\n`);
 
 if (installed.length > 0) {
   console.log('Installed:');
