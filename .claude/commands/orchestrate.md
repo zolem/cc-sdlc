@@ -71,9 +71,15 @@ For each phase:
 4. Check each response:
    - If any agent reports **blocked**: stop the pipeline, surface the blocker to the user
    - If all agents report **complete**: proceed to merge
-5. **Merge phase**: for each worktree branch returned by a completed agent, merge it into the current branch using the Bash tool (`git merge {branch}`). Merge branches one at a time. If a merge conflict occurs: surface it to the user and stop — do not attempt to auto-resolve.
-6. **Cleanup phase**: after each branch is successfully merged, remove the worktree and delete the branch: `git worktree remove --force {worktree_path} && git branch -d {branch}`. This keeps the repository clean as the pipeline progresses.
-7. After all branches for the phase are cleanly merged and cleaned up, proceed to the next phase
+5. **Merge phase**: merge each worktree branch one at a time with `git merge {branch}`.
+   - On success: clean up immediately (`git worktree remove --force {worktree_path} && git branch -d {branch}`), then continue to the next branch.
+   - On conflict: identify the conflicting files (`git diff --name-only --diff-filter=U`), then spin up the `merge-resolver` subagent with:
+     - The conflicting files and their conflict markers
+     - The task file for the branch being merged
+     - The task file for the branch it conflicted with (the previously merged task, or HEAD if it's the first merge)
+   - If the resolver reports **resolved**: clean up the worktree and branch, continue merging remaining branches.
+   - If the resolver reports **blocked**: surface the irresolvable conflict to the user and halt the pipeline.
+6. After all branches for the phase are cleanly merged and cleaned up, proceed to the next phase
 
 After all phases are complete, report a summary to the user: tasks completed, files changed, any notes from engineer agents.
 
