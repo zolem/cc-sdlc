@@ -89,7 +89,7 @@ docs/{feature-slug}/
 
 - [Claude Code](https://claude.ai/code) installed and authenticated
 - Node.js 18+
-- A git repository (required for worktree isolation during implementation)
+- A git repository with a remote configured (required for worktree isolation during implementation — run `git remote add origin <url>` before using `/orchestrate`)
 
 ## Optional: Browser Testing
 
