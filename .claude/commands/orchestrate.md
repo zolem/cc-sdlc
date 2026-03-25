@@ -89,7 +89,7 @@ Spin up the verification agents **in parallel**, passing each the docs folder pa
 - `qa-verifier` — runs the test suite and checks test plan coverage, writes `{docs_folder}/verification/qa-report.md`
 - `security-reviewer` — reviews changed code for vulnerabilities, writes `{docs_folder}/verification/security-report.md`
 - `accessibility-reviewer` — reviews UI code for a11y issues, writes `{docs_folder}/verification/accessibility-report.md`
-- `manual-tester` — starts the app and walks through user stories in a real browser, writes `{docs_folder}/verification/manual-test-report.md` *(requires Playwright MCP server — skip this agent if not configured)*
+- `manual-tester` — starts the app and walks through user stories in a real browser using Claude's built-in Chrome integration, writes `{docs_folder}/verification/manual-test-report.md` *(requires the Claude in Chrome extension — skip this agent if not available)*
 
 Wait for all agents to complete. Read each report and check the **Result** line.
 

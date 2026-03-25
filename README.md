@@ -62,7 +62,7 @@ Phase 6  Handoff           Summary of everything built, decisions made, and sugg
 | `qa-verifier` | Runs the test suite and checks every test case from the plan is implemented |
 | `security-reviewer` | Reviews changed code for OWASP Top 10 and common vulnerabilities |
 | `accessibility-reviewer` | Reviews UI code for WCAG compliance, ARIA usage, and keyboard navigation |
-| `manual-tester` | Starts the app and walks through user stories in a real browser *(optional, requires Playwright MCP)* |
+| `manual-tester` | Starts the app and walks through user stories in a real browser *(optional, requires Claude in Chrome extension)* |
 
 ### Output
 
@@ -93,10 +93,9 @@ docs/{feature-slug}/
 
 ## Optional: Browser Testing
 
-The `manual-tester` agent walks through user stories in a real browser. It requires the Playwright MCP server. To enable it:
+The `manual-tester` agent walks through user stories in a real browser using Claude's built-in Chrome integration. To enable it:
 
-```bash
-claude mcp add --transport stdio playwright -- npx -y @playwright/mcp
-```
+1. Install the **[Claude in Chrome extension](https://chromewebstore.google.com/detail/claude-in-chrome)** in Chrome or Edge (v1.0.36+)
+2. Launch Claude Code with Chrome integration enabled: `claude --chrome`
 
-The pipeline works without this — the `manual-tester` is skipped if the MCP server is not configured. All other verification (QA, security, accessibility) runs regardless.
+The pipeline works without this — the `manual-tester` is skipped if the extension is not available. All other verification (QA, security, accessibility) runs regardless.
