@@ -23,6 +23,8 @@ docs/{feature-slug}/tasks/
 
 Use the Bash tool to create these directories. All agents will read from and write to this folder. Refer to the folder path as `{docs_folder}` throughout.
 
+Before proceeding, verify the repository has a remote configured (`git remote -v`). If no remote is found, stop and tell the user to add one — worktree isolation in Phase 4 requires it.
+
 ---
 
 ## Phase 1: Requirements
