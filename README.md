@@ -76,7 +76,6 @@ Phase 6  Handoff           Summary of everything built, decisions made, and sugg
 | `engineer`               | Implements a single task — code, tests, verification — in an isolated git worktree                                |
 | `qa-verifier`            | Runs the test suite and checks every test case from the plan is implemented                                       |
 | `security-reviewer`      | Reviews changed code for OWASP Top 10 and common vulnerabilities                                                  |
-| `accessibility-reviewer` | Reviews UI code for WCAG compliance, ARIA usage, and keyboard navigation                                          |
 | `manual-tester`          | Starts the app and walks through user stories in a real browser _(optional, requires Claude in Chrome extension)_ |
 | `merge-resolver`         | Resolves git merge conflicts by understanding the intent of both conflicting tasks                                 |
 

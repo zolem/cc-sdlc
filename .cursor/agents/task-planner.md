@@ -1,7 +1,7 @@
 ---
 name: task-planner
 description: Decomposes a requirements doc, architecture plan, and test plan into an ordered, executable task list. Identifies foundational infrastructure tasks, maps user stories to vertical slice tasks, resolves dependencies, and groups tasks into parallel execution phases. Produces individual task files and a task index for the orchestrator. Docs folder in, task files out.
-model: inherit
+model: claude-opus-4-6
 readonly: false
 is_background: false
 ---

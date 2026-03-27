@@ -98,8 +98,7 @@ Spin up the verification agents **in parallel**, passing each the docs folder pa
 
 - `qa-verifier` — runs the test suite and checks test plan coverage, writes `{docs_folder}/verification/qa-report.md`
 - `security-reviewer` — reviews changed code for vulnerabilities, writes `{docs_folder}/verification/security-report.md`
-- `accessibility-reviewer` — reviews UI code for a11y issues, writes `{docs_folder}/verification/accessibility-report.md`
-- `manual-tester` — starts the app and walks through user stories in a real browser using Claude's built-in Chrome integration, writes `{docs_folder}/verification/manual-test-report.md`
+- `manual-tester` — starts the app and walks through user stories in a real browser using built-in integration, writes `{docs_folder}/verification/manual-test-report.md`
 
 Wait for all agents to complete. Read each report and check the **Result** line.
 

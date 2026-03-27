@@ -1,7 +1,7 @@
 ---
 name: qa-analyst
 description: Produces a comprehensive test plan from a requirements document. Maps each user story and acceptance criterion to specific test cases covering happy paths, edge cases, and failure scenarios. Requirements doc in, test plan out.
-model: inherit
+model: claude-opus-4-6
 readonly: false
 is_background: false
 ---

@@ -5,7 +5,7 @@ claude:
   model: sonnet
   color: green
 cursor:
-  model: inherit
+  model: claude-opus-4-6
   readonly: false
   is_background: false
 ---

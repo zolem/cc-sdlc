@@ -1,7 +1,7 @@
 ---
 name: architect
 description: Produces an implementation plan from a requirements document and codebase analysis. Reads the existing codebase to understand patterns, conventions, and structure, then maps requirements to concrete technical decisions. Requirements doc in, architecture plan out.
-model: inherit
+model: claude-opus-4-6
 readonly: false
 is_background: false
 ---
