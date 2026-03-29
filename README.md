@@ -105,8 +105,7 @@ docs/{feature-slug}/
 
 - [Claude Code](https://claude.ai/code) or [Cursor](https://cursor.com) installed and authenticated
 - Node.js 18+
-- A git repository with a remote configured (required for worktree isolation during implementation — run `git remote add origin <url>` before using `/orchestrate`)
-  - There is a bug in Claude Code where worktrees only work if you have a remote set. Until that is fixed, this is required for parallel engineer execution. The orchestrator will still work without it — it will detect that worktrees are unavailable and run engineers sequentially.
+- A git repository
 
 ## Optional: Browser Testing
 
