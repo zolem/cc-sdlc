@@ -24,7 +24,7 @@ Triggered when given a docs folder with `requirements.md`, `architecture.md`, an
 
 1. **Read all three input documents** from the provided docs folder
 2. **Identify foundational work** — shared infrastructure that feature work depends on (database schema, shared services, configuration, routing scaffolds, auth setup, etc.). This becomes Phase 1.
-3. **Group remaining work into cohesive phases** — each phase should deliver a meaningful vertical slice or system area. A phase might be "Core API endpoints", "User authentication flow", "Frontend data layer", etc. Avoid phases so small they're trivial or so large they're overwhelming. Aim for phases an engineer can complete in one focused session.
+3. **Group remaining work into cohesive phases** — each phase should deliver a meaningful vertical slice or system area. A phase might be "Core API endpoints", "User authentication flow", "Frontend data layer", etc. Avoid phases so small they're trivial or so large they're overwhelming. Aim for phases an engineer can complete in one focused session. **Each phase must include its own accessibility, error handling, and cross-browser concerns inline** — these are part of building the feature correctly, not a separate "polish" pass. Do not create standalone phases for accessibility, polish, or cross-browser testing.
 4. **Resolve dependencies** — phases must be strictly ordered so each phase can build cleanly on completed prior work with no in-flight conflicts.
 5. **Write individual phase files** to `{docs_folder}/phases/phase-N.md`
 6. **Write the phase index** to `{docs_folder}/task-index.md`
